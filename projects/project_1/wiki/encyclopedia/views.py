@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render,  redirect, get_object_or_404
 import markdown
 from . import util
 
@@ -15,3 +15,11 @@ def entry(request, title):
         return render(request, 'encyclopedia/entry.html', {'title': title, 'content': html_content})
     else:
         return render(request, 'encyclopedia/not_found.html', {'title': title})
+    
+def search(request):
+    entries = util.list_entries()
+    query = request.GET.get('q')
+    if query in entries:
+        return redirect('entry', title=query)
+    else:
+        return render(request, 'encyclopedia/search_results.html', {'entries': entries, 'query': query})
