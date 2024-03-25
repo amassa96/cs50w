@@ -9,7 +9,7 @@
         {{ content|safe }}
     </div>
     <div>
-        <form action="create-new-page/" method="post">
+        <form method="post">
             {% csrf_token %}
             <input id="edit" name="edit" type="submit" value="Edit">
         </form>

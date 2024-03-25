@@ -5,9 +5,8 @@
 {% endblock %}
 
 {%block body %}
-    <form action="submit-page/" method="post">
+    <form method="post">
         {% csrf_token %}
-        <label for="new_entry">New Entry:</label>
         <textarea id="new_entry" name="new_entry" required>Add your markdown here</textarea>
         <input type="submit" id="submit-button" name="submit-page" value="Submit">
     </form>
